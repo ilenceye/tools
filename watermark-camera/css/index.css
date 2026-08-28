@@ -1,0 +1,122 @@
+:root {
+  --border: gray;
+  --light-gray: #fafafa;
+  --gray: #eee;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-color: black;
+}
+
+.app {
+  height: 100dvh;
+}
+
+.view {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  &[data-hidden="true"] {
+    display: none;
+  }
+}
+
+.video {
+  display: block;
+  width: 100%;
+}
+
+.photo {
+  width: 100%;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  .button {
+    appearance: none;
+    border-radius: 9999px;
+    width: 5rem;
+    height: 5rem;
+    border: 3px solid white;
+  }
+
+  .capture {
+    background-color: black;
+  }
+
+  .save {
+    background-color: white;
+    color: black;
+  }
+
+  .button--secondary {
+    appearance: none;
+    border: 0;
+    border-radius: 9999px;
+    width: 3rem;
+    height: 3rem;
+    background-color: black;
+    color: white;
+  }
+
+  :is(.retake, .address-popover-trigger) {
+    margin-inline-start: 1rem;
+  }
+}
+
+.popover {
+  max-width: 480px;
+  width: max-content;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.address-popover-trigger {
+  anchor-name: --address-anchor;
+}
+
+.address-popover {
+  position-anchor: --address-anchor;
+  position-area: start center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  input {
+    padding: 0.5rem;
+  }
+}
+
+.form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

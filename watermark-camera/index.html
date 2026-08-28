@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>水印相机</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div id="camera" class="camera view">
+        <video id="video" class="video" autoplay playsinline></video>
+        <div class="controls">
+          <button
+            class="button--secondary address-popover-trigger"
+            popovertarget="popover"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-map-pin-icon lucide-map-pin"
+            >
+              <path
+                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+              />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </button>
+          <button id="capture" class="button capture"></button>
+        </div>
+      </div>
+      <div id="preview" class="preview view" data-hidden="true">
+        <img id="photo" class="photo" alt="拍摄的照片" />
+        <div class="controls">
+          <button id="retake" class="button--secondary retake">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-x-icon lucide-x"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+          <button id="save" class="button save">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-download-icon lucide-download"
+            >
+              <path d="M12 15V3" />
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <path d="m7 10 5 5 5-5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="popover" class="popover address-popover" popover="auto">
+      <form id="address-form" class="form">
+        <div class="form__field">
+          <label for="address">地址</label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            autocomplete="off"
+            autofocus
+          />
+        </div>
+        <div class="form__actions">
+          <button>取消</button>
+          <button>保存</button>
+        </div>
+      </form>
+    </div>
+
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>
