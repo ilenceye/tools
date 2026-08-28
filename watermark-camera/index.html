@@ -31,7 +31,7 @@
         <div class="controls">
           <button
             class="button--secondary address-popover-trigger"
-            popovertarget="popover"
+            popovertarget="address-popover"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,11 @@
         </div>
       </div>
     </div>
-    <div id="popover" class="popover address-popover" popover="auto">
+    <address-popover
+      id="address-popover"
+      class="popover address-popover"
+      popover="auto"
+    >
       <form id="address-form" class="form">
         <div class="form__field">
           <label for="address">地址</label>
@@ -120,7 +124,7 @@
           <button>保存</button>
         </div>
       </form>
-    </div>
+    </address-popover>
 
     <script type="module" src="js/index.js"></script>
   </body>

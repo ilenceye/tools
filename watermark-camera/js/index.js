@@ -1,31 +1,25 @@
 import storage from "./storage.js";
 
+import AddressPopover from "./components/address-popover.js";
 import CameraEl from "./components/camera-el.js";
 import ActionController from "./controllers/actions.js";
 
 /**
  * @typedef {Object} UIElements
- * @property {Object} forms
- * @property {HTMLFormElement} forms.address
  * @property {HTMLDivElement} cameraView
  * @property {CameraEl} camera
  * @property {HTMLVideoElement} video 视频元素
  * @property {HTMLDivElement} preview
  * @property {HTMLImageElement} photo 图片元素
- * @property {HTMLDivElement} popover
  */
 
 /** @type {UIElements} */
 const ui = {
-  forms: {
-    address: document.querySelector("#address-form"),
-  },
   cameraView: document.querySelector("#camera-view"),
   camera: document.querySelector("#camera"),
   video: document.querySelector("#video"),
   preview: document.querySelector("#preview"),
   photo: document.querySelector("#photo"),
-  popover: document.querySelector("#popover"),
 };
 
 /** @type {'camera' | 'preview'} */
@@ -78,24 +72,6 @@ function render() {
   ui.cameraView.dataset.hidden = String(!isCamera);
   ui.preview.dataset.hidden = String(isCamera);
 }
-
-ui.popover.addEventListener("toggle", (e) => {
-  if (e.newState === "open") {
-    // @ts-ignore
-    ui.forms.address.elements["address"].value = storage.get("address");
-  }
-});
-
-ui.forms.address.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formEl = ui.forms.address;
-  const formData = new FormData(formEl);
-  const address = formData.get("address").toString().trim();
-  // if (!address) return;
-  storage.set("address", address);
-  formEl.reset();
-  ui.popover.hidePopover();
-});
 
 new ActionController(actions).listen(document.body);
 
