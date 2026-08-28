@@ -51,13 +51,21 @@
               <circle cx="12" cy="10" r="3" />
             </svg>
           </button>
-          <button id="capture" class="button capture"></button>
+          <button
+            id="capture"
+            class="button capture"
+            data-action="capture"
+          ></button>
         </div>
       </div>
       <div id="preview" class="preview view" data-hidden="true">
         <img id="photo" class="photo" alt="拍摄的照片" />
         <div class="controls">
-          <button id="retake" class="button--secondary retake">
+          <button
+            id="retake"
+            class="button--secondary retake"
+            data-action="retake"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -74,7 +82,7 @@
               <path d="m6 6 12 12" />
             </svg>
           </button>
-          <button id="save" class="button save">
+          <button id="save" class="button save" data-action="save">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

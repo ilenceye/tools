@@ -1,13 +1,10 @@
 import storage from "./storage.js";
 
 import CameraEl from "./components/camera-el.js";
+import ActionController from "./controllers/actions.js";
 
 /**
  * @typedef {Object} UIElements
- * @property {Object} buttons
- * @property {HTMLButtonElement} buttons.capture 拍照按钮
- * @property {HTMLButtonElement} buttons.save 保存照片按钮
- * @property {HTMLButtonElement} buttons.retake 重拍按钮
  * @property {Object} forms
  * @property {HTMLFormElement} forms.address
  * @property {HTMLDivElement} cameraView
@@ -20,11 +17,6 @@ import CameraEl from "./components/camera-el.js";
 
 /** @type {UIElements} */
 const ui = {
-  buttons: {
-    capture: document.querySelector("#capture"),
-    save: document.querySelector("#save"),
-    retake: document.querySelector("#retake"),
-  },
   forms: {
     address: document.querySelector("#address-form"),
   },
@@ -38,6 +30,23 @@ const ui = {
 
 /** @type {'camera' | 'preview'} */
 let currentStatus = "camera";
+
+const actions = {
+  capture: async () => {
+    await takePhoto();
+  },
+  save: async () => {
+    savePhoto();
+    await ui.camera.start();
+    currentStatus = "camera";
+    render();
+  },
+  retake: async () => {
+    await ui.camera.start();
+    currentStatus = "camera";
+    render();
+  },
+};
 
 async function takePhoto() {
   const address = storage.get("address") || "未知地点";
@@ -70,23 +79,6 @@ function render() {
   ui.preview.dataset.hidden = String(isCamera);
 }
 
-ui.buttons.capture.addEventListener("click", () => {
-  takePhoto();
-});
-
-ui.buttons.save.addEventListener("click", async () => {
-  savePhoto();
-  await ui.camera.start();
-  currentStatus = "camera";
-  render();
-});
-
-ui.buttons.retake.addEventListener("click", async () => {
-  await ui.camera.start();
-  currentStatus = "camera";
-  render();
-});
-
 ui.popover.addEventListener("toggle", (e) => {
   if (e.newState === "open") {
     // @ts-ignore
@@ -104,5 +96,7 @@ ui.forms.address.addEventListener("submit", (e) => {
   formEl.reset();
   ui.popover.hidePopover();
 });
+
+new ActionController(actions).listen(document.body);
 
 ui.camera.start();
