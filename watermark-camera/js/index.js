@@ -29,14 +29,10 @@ const actions = {
   },
   save: async () => {
     savePhoto();
-    await ui.camera.start();
-    currentStatus = "camera";
-    render();
+    switchToCameraView();
   },
   retake: async () => {
-    await ui.camera.start();
-    currentStatus = "camera";
-    render();
+    switchToCameraView();
   },
 };
 
@@ -63,6 +59,12 @@ function savePhoto() {
 
     URL.revokeObjectURL(url);
   }, "image/jpeg");
+}
+
+async function switchToCameraView() {
+  await ui.camera.start();
+  currentStatus = "camera";
+  render();
 }
 
 function render() {
