@@ -8,7 +8,6 @@ import ActionController from "./controllers/actions.js";
  * @typedef {Object} UIElements
  * @property {HTMLDivElement} cameraView
  * @property {CameraEl} camera
- * @property {HTMLVideoElement} video 视频元素
  * @property {HTMLDivElement} preview
  * @property {HTMLImageElement} photo 图片元素
  */
@@ -17,7 +16,6 @@ import ActionController from "./controllers/actions.js";
 const ui = {
   cameraView: document.querySelector("#camera-view"),
   camera: document.querySelector("#camera"),
-  video: document.querySelector("#video"),
   preview: document.querySelector("#preview"),
   photo: document.querySelector("#photo"),
 };
