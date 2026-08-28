@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "checkJs": true, // 开启 JS 文件类型检查
+    "strict": true, // 启用严格模式
+    "noImplicitAny": true, // 隐式 any 时报错
+    "strictNullChecks": false, // 关闭 null 检查
+    "target": "ES2020",
+    "module": "esnext"
+  },
+  "include": ["**/*.js"]
+}
