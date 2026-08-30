@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "build": "bun build --compile --target=browser --minify ./src/**/*.html  --outdir=dist"
+  }
+}
